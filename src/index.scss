@@ -1,0 +1,334 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ----------------- Variables ------------------ */
+$c-33: #333;
+$c-44: #444;
+$c-55: #555;
+$c-66: #666;
+$c-78: #787878;
+$c-87: #878787;
+$c-97: #979797;
+$c-ee: #eee;
+$c-dd: #ddd;
+$c-cc: #ccc;
+$c-bb: #bbb;
+$c-aa: #aaa;
+$c-f5: #f5f5f5;
+$c-f1: #f1f1f1;
+$c-ed: #ededed;
+$c-eb: #ebebeb;
+$c-fc: #fcfcfc;
+$theme: #3f51b5;
+/* ----------------- Variables ------------------ */
+/* ----------------- Mixins ---------------- */
+@mixin flexCenter($display: flex, $align: center) {
+  display: $display;
+  align-items: $align;
+}
+
+@mixin wtHt($wt: 100%, $ht: 100%) {
+  width: $wt;
+  height: $ht;
+}
+
+@mixin listStyleNone($style: none, $pad: 0, $mar: 0) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin posDisp($pos: relative, $disp: block) {
+  position: relative;
+  display: block;
+}
+@mixin  ellispsis {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ----------------- End Mixins ---------------- */
+/* ----------- Material Icons ----------- */
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+  font-display: swap;
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons Outlined";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v8/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2)
+    format("woff2");
+  font-display: swap;
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons Round";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsround/v8/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2)
+    format("woff2");
+  font-display: swap;
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons Sharp";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconssharp/v9/oPWQ_lt5nv4pWNJpghLP75WiFR4kLh3kvmvR.woff2)
+    format("woff2");
+  font-display: swap;
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons Two Tone";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconstwotone/v7/hESh6WRmNCxEqUmNyh3JDeGxjVVyMg4tHGctNCu0.woff2)
+    format("woff2");
+  font-display: swap;
+}
+@mixin mdicon-type($args...) {
+  @debug keywords($args);
+  @each $class-name, $prop-value in keywords($args) {
+    .#{$class-name} {
+      font-family: $prop-value;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+}
+@include mdicon-type(
+  $material-icons: "Material Icons",
+  $material-icons-outlined: "Material Icons Outlined",
+  $material-icons-round: "Material Icons Round",
+  $material-icons-sharp: "Material Icons Sharp",
+  $material-icons-two-tone: "Material Icons Two Tone"
+);
+
+/* ----------- End Material Icons ----------- */
+
+.linearBackground {
+  display: block;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, $c-ee 8%, $c-dd 18%, $c-ee 33%);
+  background-size: 1000px 104px;
+  height: 14px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/* ----------- Page Loader ----------- */
+.pageLoader {
+  padding: 20px;
+}
+/* ----------- End Page Loader ---------- */
+
+/* ----------- Filter Loader ----------- */
+
+/* ----------- End Filter Loader ---------- */
+/* ----------- Header ----------- */
+.header {
+  background: $theme;
+  color: white;
+  padding: 20px 4%;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  nav {
+    position: relative;
+    @include flexCenter;
+    i {
+      color: white;
+      margin-right: 15px;
+    }
+    .logoName {
+      font-size: 18px;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+    }
+  }
+}
+/* ----------- Header ----------- */
+/* --------- Filter Wrap --------- */
+.filterSection {
+  position: relative;
+  display: grid;
+  align-items: flex-end;
+  padding: 20px;
+  grid-template-columns:
+    calc(45% - 25px) calc(15% - 25px) calc(15% - 25px)
+    25%;
+  column-gap: 25px;
+}
+/* --------- End Filter Wrap --------- */
+/* ----------- Order Status ----------- */
+.orderStatusSection {
+  position: relative;
+  @include listStyleNone;
+  @include flexCenter;
+  justify-content: center;
+  border-bottom: 1px solid $c-ee;
+  width: fit-content;
+  li {
+    padding: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    @include posDisp;
+    .stepName {
+      color: $c-66;
+    }
+    &.active {
+      .stepName {
+        color: palevioletred;
+      }
+      .bar {
+        position: absolute;
+        bottom: -1px;
+        @include wtHt(100%, 4px);
+        background: palevioletred;
+        right: 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+/* ----------- End Order Status ----------- */
+
+/* ------------ Date Input ------------ */
+.dateInputSection {
+  @include posDisp;
+  label {
+    @include posDisp;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: $c-66;
+  }
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $c-cc;
+    padding: 5px 0;
+    color: $theme;
+  }
+}
+/* ------------ End Date Input ------------ */
+/* ------------ Range Input ------------ */
+.rangeInputSection {
+  @include posDisp;
+  label {
+    @include posDisp;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: $c-66;
+  }
+  input {
+    width: 100%;
+    padding: 5px 0;
+    color: $theme;
+  }
+}
+/* ------------ End Date Input ------------ */
+/* ------------ Data table ----------- */
+.dataTableSection {
+  position: relative;
+  padding: 20px;
+  .tableViewSection {
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    .tableCont {
+      position: relative;
+      width: 100%;
+      border: 1px solid $c-cc;
+      border-right: none;
+      &:last-child {
+        border-right: 1px solid $c-cc;;
+      }
+      .tableHeader {
+        position: relative;
+        padding: 5px;
+        height: 26px;
+        @include flexCenter;
+        &:not(:last-child) {
+          border-bottom: 1px solid $c-cc;;
+        }
+        border-collapse: collapse;
+        text-transform: capitalize;
+        background: #eee;
+        font-weight: 600;
+      }
+      .tableBody {
+        position: relative;
+        padding: 5px;
+        height: 26px;
+        @include flexCenter;
+        @include ellispsis;
+        &:not(:last-child) {
+          border-bottom: 1px solid $c-cc;
+        }
+      }
+    }
+  }
+}
