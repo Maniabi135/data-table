@@ -16,7 +16,7 @@ const Table = () => {
   };
 
   const getRecord = (item, key) => {
-    return item[key] && key.toLowerCase().indexOf("date") >= 0
+    return item[key] && key?.toLowerCase()?.indexOf("date") >= 0
       ? convertToDateFormat(item[key])
       : item[key] || "--";
   };
