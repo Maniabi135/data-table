@@ -23,6 +23,7 @@ const RangeInput = props => {
   return (
     <div className="rangeInputSection">
       <label htmlFor={key}>{name}</label>
+      {rangeValue[0]} - {rangeValue[1]}
       <Range
         min={startRange}
         max={endRange}

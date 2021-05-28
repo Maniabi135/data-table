@@ -6,7 +6,7 @@ const DateInput = props => {
 
   const changeInput = val => {
     setDate(val);
-    filterCbk({ id: new Date(val).getTime() });
+    filterCbk({ [id]: new Date(val).getTime() });
   };
 
   return (

@@ -15,8 +15,8 @@ const OrderStatus = props => {
 
   return (
     <ul className="orderStatusSection">
-      {tabList.map(item => {
-        let isActive = activeTab?.toLowerCase() === item?.toLowerCase();
+      {tabList?.map(item => {
+        const isActive = activeTab?.toLowerCase() === item?.toLowerCase();
         return (
           <li
             key={`${item}`}

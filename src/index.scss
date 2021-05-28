@@ -44,6 +44,7 @@ $c-eb: #ebebeb;
 $c-fc: #fcfcfc;
 $theme: #3f51b5;
 /* ----------------- Variables ------------------ */
+
 /* ----------------- Mixins ---------------- */
 @mixin flexCenter($display: flex, $align: center) {
   display: $display;
@@ -65,13 +66,14 @@ $theme: #3f51b5;
   position: relative;
   display: block;
 }
-@mixin  ellispsis {
+@mixin ellispsis {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 /* ----------------- End Mixins ---------------- */
+
 /* ----------- Material Icons ----------- */
 /* fallback */
 @font-face {
@@ -152,40 +154,12 @@ $theme: #3f51b5;
 
 /* ----------- End Material Icons ----------- */
 
-.linearBackground {
-  display: block;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: placeHolderShimmer;
-  animation-timing-function: linear;
-  background: #f6f7f8;
-  background: linear-gradient(to right, $c-ee 8%, $c-dd 18%, $c-ee 33%);
-  background-size: 1000px 104px;
-  height: 14px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-@keyframes placeHolderShimmer {
-  0% {
-    background-position: -468px 0;
-  }
-  100% {
-    background-position: 468px 0;
-  }
-}
-
 /* ----------- Page Loader ----------- */
 .pageLoader {
   padding: 20px;
 }
 /* ----------- End Page Loader ---------- */
 
-/* ----------- Filter Loader ----------- */
-
-/* ----------- End Filter Loader ---------- */
 /* ----------- Header ----------- */
 .header {
   background: $theme;
@@ -208,6 +182,7 @@ $theme: #3f51b5;
   }
 }
 /* ----------- Header ----------- */
+
 /* --------- Filter Wrap --------- */
 .filterSection {
   position: relative;
@@ -220,6 +195,7 @@ $theme: #3f51b5;
   column-gap: 25px;
 }
 /* --------- End Filter Wrap --------- */
+
 /* ----------- Order Status ----------- */
 .orderStatusSection {
   position: relative;
@@ -228,6 +204,7 @@ $theme: #3f51b5;
   justify-content: center;
   border-bottom: 1px solid $c-ee;
   width: fit-content;
+  text-transform: capitalize;
   li {
     padding: 15px;
     cursor: pointer;
@@ -271,22 +248,25 @@ $theme: #3f51b5;
   }
 }
 /* ------------ End Date Input ------------ */
+
 /* ------------ Range Input ------------ */
 .rangeInputSection {
   @include posDisp;
   label {
     @include posDisp;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: $c-66;
   }
-  input {
-    width: 100%;
-    padding: 5px 0;
-    color: $theme;
+  .rc-slider-track {
+    background-color: $theme;
+  }
+  .rc-slider-handle {
+    border-color: $theme;
   }
 }
 /* ------------ End Date Input ------------ */
+
 /* ------------ Data table ----------- */
 .dataTableSection {
   position: relative;
@@ -304,7 +284,7 @@ $theme: #3f51b5;
       border: 1px solid $c-cc;
       border-right: none;
       &:last-child {
-        border-right: 1px solid $c-cc;;
+        border-right: 1px solid $c-cc;
       }
       .tableHeader {
         position: relative;
@@ -312,17 +292,18 @@ $theme: #3f51b5;
         height: 26px;
         @include flexCenter;
         &:not(:last-child) {
-          border-bottom: 1px solid $c-cc;;
+          border-bottom: 1px solid $c-cc;
         }
         border-collapse: collapse;
         text-transform: capitalize;
         background: #eee;
         font-weight: 600;
       }
-      .tableBody {
+      .tableColumn {
         position: relative;
         padding: 5px;
         height: 26px;
+        text-transform: capitalize;
         @include flexCenter;
         @include ellispsis;
         &:not(:last-child) {
@@ -332,3 +313,55 @@ $theme: #3f51b5;
     }
   }
 }
+/* ------ End Data Table ----- */
+
+/* --------- Pagination --------- */
+.pagination {
+  @include listStyleNone;
+  @include flexCenter;
+  justify-content: center;
+  margin: 20px 0;
+  column-gap: 10px;
+  li {
+    position: relative;
+    @include flexCenter;
+    justify-content: center;
+    border-radius: 35px;
+    border: 1px solid $c-ee;
+    cursor: pointer;
+    box-shadow: 0px 0px 7px 0 rgba(0, 0, 0, 0.05);
+    i {
+      font-size: 20px;
+    }
+    color: $c-66;
+    &.disabled {
+      user-select: none;
+      pointer-events: none;
+      background: $c-f5;
+      cursor: none;
+      color: $c-dd;
+      box-shadow: none;
+      border-color: transparent;
+    }
+    &.prev,
+    &.next {
+      @include wtHt(30px, 30px);
+      &:hover {
+        background: $c-f5;
+        color: black;
+        transition: all 0.3s ease;
+        box-shadow: 0px 0px 7px 0 rgba(0, 0, 0, 0.5);
+      }
+    }
+    &.pageNo {
+      @include wtHt(24px, 24px);
+      &.active {
+        background: $theme;
+        color: white;
+        border: 1px solid $theme;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+/* --------- End Pagination --------- */
